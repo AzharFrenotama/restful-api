@@ -15,8 +15,8 @@ class OrdersController extends Controller
             public function store(Request $request)
             {
             $validated = $request->validate([
-            'product_id' => 'required|string|max:255',
-            'quantity' => 'required|integer',
+            'product_id' => 'required|exists:products,id',
+            'quantity' => 'required|integer|min:1',
             'total_price' => 'required|numeric|min:0',
             ]);
             $orders = Orders::create($validated);
@@ -26,8 +26,8 @@ class OrdersController extends Controller
             public function update(Request $request, $id)
             {
             $validated = $request->validate([
-            'product_id' => 'required|string|max:255',
-            'quantity' => 'required|integer',
+            'product_id' => 'required|exists:products,id',
+            'quantity' => 'required|integer|min:1',
             'total_price' => 'required|numeric|min:0',
             ]);
             $orders = Orders::findOrFail($id);
