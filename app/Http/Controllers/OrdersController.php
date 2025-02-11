@@ -16,6 +16,7 @@ class OrdersController extends Controller
             {
             $validated = $request->validate([
             'product_id' => 'required|exists:products,id',
+            'customer_id' => 'required|exists:customers,id',
             'quantity' => 'required|integer|min:1',
             'total_price' => 'required|numeric|min:0',
             ]);
@@ -27,6 +28,7 @@ class OrdersController extends Controller
             {
             $validated = $request->validate([
             'product_id' => 'required|exists:products,id',
+            'customer_id' => 'required|exists:customers,id',
             'quantity' => 'required|integer|min:1',
             'total_price' => 'required|numeric|min:0',
             ]);
